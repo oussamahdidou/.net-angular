@@ -1,4 +1,4 @@
-namespace backend;
+namespace ComptabiliteAPi;
 
 public class WeatherForecast
 {

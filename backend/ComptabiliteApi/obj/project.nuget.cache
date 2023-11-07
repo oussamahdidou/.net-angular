@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ioDyqDhfM+JiRZaOlYyU6ckAvB3s+7Zkrtfy8j1B2Koat20gHLavJEu1j6aUlyh+q5aWkzZZtALs6AnJKAvDVg==",
+  "dgSpecHash": "jyj3Z1jggl/yo3odxiqwQ9uq8ArmKElSOKlPzWjnUxltK0Emlm4tre87qNf+sBUSmndOP1MyrP+USBQF9Q00Bw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Downloads\\.net-angular\\.net-angular\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Downloads\\.net-angular\\.net-angular\\backend\\ComptabiliteAPi\\ComptabiliteAPi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.11\\microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
