@@ -20,4 +20,4 @@ Make sure you have the following tools installed:
 1. Clone the repository:
 
    ```bash
-   git clone <>
+   git clone <https://github.com/oussamahdidou/.net-angular.git>
