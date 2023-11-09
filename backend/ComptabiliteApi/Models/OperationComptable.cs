@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ComptabiliteAPi.Models
 {
@@ -10,7 +11,7 @@ namespace ComptabiliteAPi.Models
         int code_compte_debiteurs { get; set; }
         string? compte_crediteurs {  get; set; }
         int code_compte_crediteurs { get; set; }
-        int id_facture {  get; set; }
+        int id_Facure { get; set; }
 
 
     }
