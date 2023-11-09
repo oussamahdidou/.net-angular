@@ -75,3 +75,12 @@ C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\obj\De
 C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\obj\Debug\net7.0\ComptabiliteAPi.pdb
 C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\obj\Debug\net7.0\ComptabiliteAPi.genruntimeconfig.cache
 C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\obj\Debug\net7.0\ref\ComptabiliteAPi.dll
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\ComptabiliteAPi.staticwebassets.runtime.json
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
