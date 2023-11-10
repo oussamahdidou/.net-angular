@@ -33,13 +33,14 @@
         </svg>
       </span>
     </div>
-    <button class="submit" type="submit">
-      Sign in
-    </button>
+    <input class="submit btn btn-danger mx-auto" (click)="onsubmit()" value=" Sign in" type="submit"
+      [disabled]="LoginForm.invalid">
+
+
 
     <p class="signup-link">
       No account?
-      <a href="/frontend/angular-app/src/app/Auth/Register/Register.component.html">Sign up</a>
+      <a href="/Auth/Register">Sign up</a>
     </p>
   </form>
 </body>

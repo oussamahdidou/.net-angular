@@ -11,6 +11,13 @@ import {
   styleUrls: ['./Login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  onsubmit() {
+    if (this.LoginForm.invalid) {
+      console.log('invalide loginform');
+    } else {
+      console.log(this.LoginForm.value);
+    }
+  }
   LoginForm: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
