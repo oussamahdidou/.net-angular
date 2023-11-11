@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
     password: new FormControl(''),
     mail: new FormControl(''),
     confirmpassword: new FormControl(''),
-    agree: new FormControl(''),
   });
 
   constructor(private formBuilder: FormBuilder) {}
@@ -36,7 +35,6 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       mail: ['', Validators.required],
       confirmpassword: ['', Validators.required],
-      agree: ['', Validators.requiredTrue],
     });
   }
 }
