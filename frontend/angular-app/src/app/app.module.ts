@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './NotFound/NotFound.component';
 import { AuthModule } from './Auth/Auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent, NotFoundComponent],
+  declarations: [AppComponent, NotFoundComponent, NotFoundComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

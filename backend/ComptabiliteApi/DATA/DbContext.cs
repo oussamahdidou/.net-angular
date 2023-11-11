@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ComptabiliteAPi.DATA
 {
-    public class DbContext : IdentityDbContext<User>
+    public class DatabContext : IdentityDbContext<User>
     {
-        public DbContext(DbContextOptions<DbContext> options) : base(options)
+        public DatabContext(DbContextOptions<DatabContext> options) : base(options)
         {
 
         }

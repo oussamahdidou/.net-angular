@@ -1,4 +1,5 @@
 using ComptabiliteAPi.Configurations;
+using ComptabiliteAPi.DATA;
 using ComptabiliteAPi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -12,40 +13,38 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key:"JwtConfig"));
 builder.Services.AddControllers();
-builder.Services.AddDbContext<DbContext>(options =>
+builder.Services.AddDbContext<DatabContext>(options =>
 {
 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 ;
 });
 builder.Services.AddIdentity<User, IdentityRole>(options=>
-{
-    options.SignIn.RequireConfirmedAccount = false;  
-})
-    .AddEntityFrameworkStores<DbContext>();
+{ 
+}).AddEntityFrameworkStores<DatabContext>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}
-).AddJwtBearer(jwt =>
-{
-    var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection("JwtConfig:Secret").Value);
-    jwt.SaveToken = true;
-    jwt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-    {
-        ValidateIssuerSigningKey=true,
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        RequireExpirationTime = false,
-        ValidateLifetime=false,
-};
-});
+//builder.Services.AddAuthentication(options =>
+//{
+//    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//}
+//).AddJwtBearer(jwt =>
+//{
+//    var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection("JwtConfig:Secret").Value);
+//    jwt.SaveToken = true;
+//    jwt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+//    {
+//        ValidateIssuerSigningKey=true,
+//        ValidateIssuer = false,
+//        ValidateAudience = false,
+//        IssuerSigningKey = new SymmetricSecurityKey(key),
+//        RequireExpirationTime = false,
+//        ValidateLifetime=false,
+//};
+//});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
