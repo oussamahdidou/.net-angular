@@ -7,16 +7,32 @@ import { NotFoundComponent } from './NotFound/NotFound.component';
 import { AuthModule } from './Auth/Auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent, NotFoundComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    NotFoundComponent,
+    NotFoundComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     FormsModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:5001'],
+        //disallowedRoutesRoutes: [],
+      },
+    }),
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })
