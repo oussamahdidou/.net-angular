@@ -24,14 +24,14 @@ export function tokenGetter() {
     AuthModule,
     FormsModule,
     ReactiveFormsModule,
-    JwtModule.forRoot({
+    /* JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         allowedDomains: ['localhost:5001'],
         disallowedRoutes: [],
         //disallowedRoutesRoutes: [],
       },
-    }),
+    }),*/
   ],
 
   providers: [],
