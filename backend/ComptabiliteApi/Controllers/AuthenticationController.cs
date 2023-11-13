@@ -59,7 +59,7 @@ namespace ComptabiliteAPi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError("error 404 kchkch");
-                return StatusCode(StatusCodes.Status500InternalServerError, "error404 kchckch");
+                return StatusCode(StatusCodes.Status500InternalServerError,ex+"error404 kchckch");
             }
         }
     }

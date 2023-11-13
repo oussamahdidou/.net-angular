@@ -13,11 +13,12 @@ export class ComptableGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.authService.IsComptable()) {
-      // User is authorized, allow access to the route
+      console.log(this.authService.IsComptable());
       return true;
     } else {
       // User is not authorized, redirect to login page
       this.router.navigate(['/Auth/AccessDenied']);
+      console.log(this.authService.IsComptable());
       return false;
     }
   }

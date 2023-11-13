@@ -20,6 +20,16 @@ builder.Services.AddDbContext<DatabContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 ;
 });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOriginPolicy", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200") // Replace with your Angular app's origin
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
 }).AddEntityFrameworkStores<DatabContext>();
@@ -59,9 +69,27 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseRouting();
+app.UseCors("AllowOriginPolicy"); // Place this before UseAuthorization
 app.UseAuthorization();
 app.UseAuthentication();
 app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    // Map controllers
+    endpoints.MapControllers();
 
+    // Map specific routes for your controller actions
+    endpoints.MapControllerRoute(
+        name: "authentication",
+        pattern: "api/authentication/login",
+        defaults: new { controller = "Authentication", action = "Login" });
+
+    endpoints.MapControllerRoute(
+        name: "registration",
+        pattern: "api/authentication/registeration",
+        defaults: new { controller = "Authentication", action = "Register" });
+
+    // Additional endpoint mappings as needed...
+});
 app.Run();

@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -22,26 +23,36 @@ export class LoginComponent implements OnInit {
   ) {}
   onsubmit() {
     if (this.LoginForm.invalid) {
-      console.log('invalide loginform');
+      console.log('Invalid login form');
     } else {
       console.log(this.LoginForm.value);
-      this.authservice.LoginService(this.LoginForm.value).subscribe(
-        (result) => {
-          if (result == null) {
-            this.response = result;
-            localStorage.setItem('jwt', this.response.jwtToken);
-            this.router.navigate(['/home']);
+      this.authservice.loginService(this.LoginForm.value).subscribe(
+        (response) => {
+          console.log(response); // Log the raw response
+          if (response instanceof HttpResponse) {
+            if (response.status === 200) {
+              const token = response.body; // Directly access the body as text
+              console.log(token);
+              localStorage.setItem('jwt', token);
+              this.router.navigate(['/home']);
+            }
+          } else {
+            // Handle HTTP errors here
+            console.log(response.status);
+            console.log(response.error); // Log the error response body
+            Swal.fire({
+              title: 'Login Failed',
+              text: response.error || 'Please check your credentials',
+              icon: 'error',
+              confirmButtonText: 'Ok',
+            });
+            this.LoginForm.reset();
           }
-          window.location.href = '/dashboard';
         },
         (error) => {
-          Swal.fire({
-            title: 'Hello World!',
-            text: 'This is a SweetAlert dialog',
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
-          this.LoginForm.reset();
+          // Handle non-HTTP errors here
+          console.error(error);
+          // ...
         }
       );
     }
