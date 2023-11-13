@@ -17,7 +17,9 @@ export class OperateurGuard implements CanActivate {
       return true;
     } else {
       // User is not authorized, redirect to login page
-      this.router.navigate(['/Auth/AccessDenied']);
+      this.router.navigate(['/Auth/AccessDenied'], {
+        skipLocationChange: true,
+      });
       return false;
     }
   }

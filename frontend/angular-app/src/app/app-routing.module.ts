@@ -4,6 +4,8 @@ import { LoginComponent } from './Auth/Login/Login.component';
 import { NotFoundComponent } from './NotFound/NotFound.component';
 import { HomeComponent } from './home/home.component';
 import { ComptableGuard } from './Guard/comptable.guard';
+import { OperateurGuard } from './Guard/operateur.guard';
+import { FactureComponent } from './Facture/Facture.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,12 @@ const routes: Routes = [
     component: HomeComponent,
     pathMatch: 'full',
     canActivate: [ComptableGuard],
+  },
+  {
+    path: 'Facture',
+    component: FactureComponent,
+    pathMatch: 'full',
+    canActivate: [OperateurGuard],
   },
   {
     path: 'Auth',
