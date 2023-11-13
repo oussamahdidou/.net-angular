@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         (result) => {
           if (result == null) {
             this.response = result;
-            localStorage.setItem('token', this.response.jwtToken);
+            localStorage.setItem('jwt', this.response.jwtToken);
             this.router.navigate(['/home']);
           }
           window.location.href = '/dashboard';
