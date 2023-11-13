@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/Services/AuthService.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-Login',
   templateUrl: './Login.component.html',
@@ -34,7 +35,13 @@ export class LoginComponent implements OnInit {
           window.location.href = '/dashboard';
         },
         (error) => {
-          alert('da');
+          Swal.fire({
+            title: 'Hello World!',
+            text: 'This is a SweetAlert dialog',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+          });
+          this.LoginForm.reset();
         }
       );
     }

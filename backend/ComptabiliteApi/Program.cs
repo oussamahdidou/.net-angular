@@ -11,7 +11,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key:"JwtConfig"));
+builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key: "JwtConfig"));
 builder.Services.AddControllers();
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddDbContext<DatabContext>(options =>
@@ -20,8 +20,8 @@ builder.Services.AddDbContext<DatabContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 ;
 });
-builder.Services.AddIdentity<User, IdentityRole>(options=>
-{ 
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
 }).AddEntityFrameworkStores<DatabContext>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -48,26 +48,7 @@ builder.Services.AddAuthentication(options =>
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
                 };
             });
-//builder.Services.AddAuthentication(options =>
-//{
-//    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//}
-//).AddJwtBearer(jwt =>
-//{
-//    var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection("JwtConfig:Secret").Value);
-//    jwt.SaveToken = true;
-//    jwt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-//    {
-//        ValidateIssuerSigningKey=true,
-//        ValidateIssuer = false,
-//        ValidateAudience = false,
-//        IssuerSigningKey = new SymmetricSecurityKey(key),
-//        RequireExpirationTime = false,
-//        ValidateLifetime=false,
-//};
-//});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
