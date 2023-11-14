@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
               const token = response.body; // Directly access the body as text
               console.log(token);
               localStorage.setItem('jwt', token);
-              this.router.navigate(['/home']);
+              this.router.navigate(['/']);
             }
           } else {
             // Handle HTTP errors here
