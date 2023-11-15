@@ -35,7 +35,7 @@ namespace ComptabiliteAPi.Services
                 Email = model.mail,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.username,
-                Token = "Null"
+                id_company= model.id_company
 
             };
             var createUserResult = await userManager.CreateAsync(user, model.password);
