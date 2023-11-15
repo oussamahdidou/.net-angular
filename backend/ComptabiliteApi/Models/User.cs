@@ -4,6 +4,6 @@ namespace ComptabiliteAPi.Models
 {
     public class User:IdentityUser
     {
-        public string? Token { get; set; }
+        public required string id_company { get; set; }
     }
 }
