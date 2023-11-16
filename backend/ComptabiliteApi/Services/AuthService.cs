@@ -27,7 +27,8 @@ namespace ComptabiliteAPi.Services
         public async Task<(int, string)> Registeration(RegistrationModel model)
         {
             var userExists = await userManager.FindByNameAsync(model.username);
-            if (userExists != null)
+            var companyexist= databContext.Companies.Any(x => x.Lei == model.Lei);
+            if (userExists != null && !companyexist )
                 return (0, "User already exists");
 
             var user = new User()
@@ -47,11 +48,11 @@ namespace ComptabiliteAPi.Services
             if (!createUserResult.Succeeded)
                 return (0, "User creation failed! Please check user details and try again.");
 
-            if (!await roleManager.RoleExistsAsync(UserRoles.Comptable))
-                await roleManager.CreateAsync(new IdentityRole(UserRoles.Comptable));
+            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
 
-            if (await roleManager.RoleExistsAsync(UserRoles.Comptable))
-                await userManager.AddToRoleAsync(user, UserRoles.Comptable);
+            if (await roleManager.RoleExistsAsync(UserRoles.Admin))
+                await userManager.AddToRoleAsync(user, UserRoles.Admin);
             databContext.SaveChangesAsync();
             return (1, "User created successfully!");
         }

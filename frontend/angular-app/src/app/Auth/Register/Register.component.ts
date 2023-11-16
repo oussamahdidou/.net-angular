@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
       this.authservice.RegisterService(this.LoginForm.value).subscribe(
         (response) => {
           console.log(response);
+          this.router.navigate(['/Auth/Login']);
         },
         (error) => {
           // Handle non-HTTP errors here

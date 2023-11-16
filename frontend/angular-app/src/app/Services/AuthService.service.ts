@@ -72,4 +72,12 @@ export class AuthServiceService {
 
     return false;
   }
+  IsLoggedIn() {
+    const token = localStorage.getItem('jwt');
+    if (token != null) {
+      return true;
+    }
+
+    return false;
+  }
 }

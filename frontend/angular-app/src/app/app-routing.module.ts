@@ -6,13 +6,14 @@ import { HomeComponent } from './home/home.component';
 import { ComptableGuard } from './Guard/comptable.guard';
 import { OperateurGuard } from './Guard/operateur.guard';
 import { FactureComponent } from './Facture/Facture.component';
+import { authGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     pathMatch: 'full',
-    canActivate: [ComptableGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'Facture',
