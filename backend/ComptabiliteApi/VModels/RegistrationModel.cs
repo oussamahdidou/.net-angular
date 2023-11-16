@@ -16,6 +16,10 @@ namespace ComptabiliteAPi.VModels
         public string? confirmpassword { get; set; }
         [Required(ErrorMessage = "Password is required")]
 
-        public string? id_company { get; set; }
+        public string? Lei { get; set; }
+        [Required(ErrorMessage = "Password is required")]
+
+        public string? Company_name { get; set; }
+
     }
 }

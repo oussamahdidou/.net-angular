@@ -51,7 +51,7 @@ namespace ComptabiliteAPi.Controllers
                 var (status, message) = await _authService.Registeration(model);
                 if (status == 0)
                 {
-                    return BadRequest("error 404 kchckch");
+                    return BadRequest(message);
                 }
                 return CreatedAtAction(nameof(Register), model);
 
@@ -59,7 +59,7 @@ namespace ComptabiliteAPi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError("error 404 kchkch");
-                return StatusCode(StatusCodes.Status500InternalServerError,ex+"error404 kchckch");
+                return StatusCode(StatusCodes.Status500InternalServerError,ex);
             }
         }
     }

@@ -19,7 +19,12 @@ export class AuthServiceService {
       }
     );
   }
-
+  RegisterService(loginForm: any): Observable<any> {
+    return this.request.post(
+      'https://localhost:7270/api/authentication/registeration',
+      loginForm
+    );
+  }
   jwtHelper = new JwtHelperService();
 
   IsComptable() {

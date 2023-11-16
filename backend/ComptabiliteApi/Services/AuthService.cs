@@ -35,9 +35,14 @@ namespace ComptabiliteAPi.Services
                 Email = model.mail,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.username,
-                id_company= model.id_company
-
+                id_company= model.Lei,
             };
+            var company = new Company()
+            {
+                Lei = model.Lei,
+                Name=model.Company_name
+            };
+            databContext.Companies.Add(company);
             var createUserResult = await userManager.CreateAsync(user, model.password);
             if (!createUserResult.Succeeded)
                 return (0, "User creation failed! Please check user details and try again.");
