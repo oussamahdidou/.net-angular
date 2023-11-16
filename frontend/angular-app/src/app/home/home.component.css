@@ -149,3 +149,16 @@ a {
 .Btn:active {
   transform: translate(2px, 2px);
 }
+.annonce {
+  padding-top: 100px;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: justify;
+}
+.probleme h1 {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.services {
+  padding: 0 50px 0 50px;
+}
