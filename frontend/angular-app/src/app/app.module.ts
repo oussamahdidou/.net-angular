@@ -9,16 +9,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FactureComponent } from './Facture/Facture.component';
+import { OperationComponent } from './Operation/Operation.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     NotFoundComponent,
     NotFoundComponent,
     HomeComponent,
-      FactureComponent
+      FactureComponent,
+      OperationComponent
    ],
   imports: [
     BrowserModule,
