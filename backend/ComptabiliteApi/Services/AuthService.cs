@@ -89,7 +89,6 @@ namespace ComptabiliteAPi.Services
             {
                 Issuer = _configuration["JWT:ValidIssuer"],
                 Audience = _configuration["JWT:ValidAudience"],
-                Expires = DateTime.UtcNow.AddHours(3),
                 SigningCredentials = new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256),
                 Subject = new ClaimsIdentity(claims)
             };

@@ -75,6 +75,8 @@ export class AuthServiceService {
   IsLoggedIn() {
     const token = localStorage.getItem('jwt');
     if (token != null) {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      console.log(decodedToken);
       return true;
     }
 
