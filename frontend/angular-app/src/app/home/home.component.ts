@@ -12,5 +12,11 @@ export class HomeComponent {
     private authService: AuthServiceService,
     private router: Router
   ) {}
+  divheight = 'inherit';
   ngOnInit(): void {}
+  OpenNav() {
+    console.log('clicked');
+    this.divheight = '100px';
+    console.log('clickedafter');
+  }
 }

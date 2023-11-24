@@ -244,8 +244,11 @@
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-    <div class="nav py-3">
-
+    <div [style.height]="divheight" class="nav py-3">
+        <button class="Betn" (click)="OpenNav()">
+            <i style="color: white;" class="fa-solid fa-arrow-left"></i>
+            <span class="tooltip">Open</span>
+        </button>
         <button class="Betn">
             <i style="color: white;" class="  fa-solid fa-user-plus">
 
