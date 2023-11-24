@@ -2,11 +2,9 @@
 
 ## Overview
 
-This project demonstrates a microservices architecture where the frontend is built using Angular, and three backend services are implemented using .NET Web APIs. The backend services include:
+This project demonstrates a service architecture where the frontend is built using Angular, and a backend service implemented using .NET Web APIs. The backend service:
 
 1. **Comptabilité (Accounting) Service**: Responsible for handling accounting-related functionalities.
-2. **Service d'Achat (Purchase Service)**: Manages purchase-related operations.
-3. **Service de Vente (Sales Service)**: Handles sales-related tasks.
 
 ## Prerequisites
 
@@ -21,3 +19,4 @@ Make sure you have the following tools installed:
 
    ```bash
    git clone https://github.com/oussamahdidou/.net-angular.git
+   ```
