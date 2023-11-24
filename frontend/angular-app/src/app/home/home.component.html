@@ -15,10 +15,14 @@
                 <h3>FinAccPro</h3>
             </div>
             <div class="menu d-flex">
-                <div class="px-3 pt-3"><a href="" class=" menu-items  ">Journal</a></div>
-                <div class="px-3 pt-3"><a href="" class=" menu-items ">BigLivre</a></div>
-                <div class="px-3 pt-3"><a href="" class=" menu-items ">Opeartions</a></div>
-                <div class="px-3 pt-3"><a href="" class=" menu-items ">Accounting</a></div>
+                <div class="px-3 pt-3"><a [routerLink]="['/Accounting/LivreJournal']" class=" menu-items  ">Journal</a>
+                </div>
+                <div class="px-3 pt-3"><a [routerLink]="['/Accounting/BigLivre']" class=" menu-items ">BigLivre</a>
+                </div>
+                <div class="px-3 pt-3"><a [routerLink]="['/Opeartion']" class=" menu-items ">Opeartions</a>
+                </div>
+                <div class="px-3 pt-3"><a [routerLink]="['/Accounting']" class=" menu-items ">Accounting</a>
+                </div>
             </div>
             <div class="auth d-flex ">
                 <button [routerLink]="['/Auth/Register']" class="Btn mx-2">

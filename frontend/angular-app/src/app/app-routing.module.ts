@@ -5,7 +5,7 @@ import { NotFoundComponent } from './NotFound/NotFound.component';
 import { HomeComponent } from './home/home.component';
 import { ComptableGuard } from './Guard/comptable.guard';
 import { OperateurGuard } from './Guard/operateur.guard';
-import { FactureComponent } from './Facture/Facture.component';
+
 import { authGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
@@ -15,15 +15,27 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [authGuard],
   },
-  {
-    path: 'Facture',
-    component: FactureComponent,
-    pathMatch: 'full',
-    canActivate: [OperateurGuard],
-  },
+
   {
     path: 'Auth',
     loadChildren: () => import('./Auth/Auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'Dashboard',
+    loadChildren: () =>
+      import('./Dashboard/Dashboard.module').then((m) => m.DashboardModule),
+  },
+  {
+    path: 'Accounting',
+    loadChildren: () =>
+      import('./Comptabilite/Comptabilite.module').then(
+        (m) => m.ComptabiliteModule
+      ),
+  },
+  {
+    path: 'Operation',
+    loadChildren: () =>
+      import('./Operation/Operation.module').then((m) => m.OperationModule),
   },
   { path: '**', component: NotFoundComponent },
 ];

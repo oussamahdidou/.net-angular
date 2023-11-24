@@ -1,11 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComptabiliteComponent } from './Comptabilite.component';
-
+import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BigLivreComponent } from './BigLivre/BigLivre.component';
+import { LivreJournalComponent } from './LivreJournal/LivreJournal.component';
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      { path: 'BigLivre', component: BigLivreComponent },
+      { path: 'LivreJournal', component: LivreJournalComponent },
+      { path: '', component: ComptabiliteComponent },
+    ],
+  },
+];
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  declarations: [ComptabiliteComponent]
+  declarations: [ComptabiliteComponent],
 })
-export class ComptabiliteModule { }
+export class ComptabiliteModule {}
