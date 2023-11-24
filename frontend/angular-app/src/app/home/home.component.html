@@ -10,11 +10,12 @@
 
 <body>
     <div class="container-fluid heading mb-5">
-        <div class=" pt-3 px-5 d-flex justify-content-between align-items-center">
+        <div
+            class=" pt-3 px-3 px-lg-5  d-flex justify-content-start justify-content-lg-between align-items-center header">
             <div class="title pt-3">
                 <h3>FinAccPro</h3>
             </div>
-            <div class="menu d-flex">
+            <div class="menu d-none d-lg-flex">
                 <div class="px-3 pt-3"><a [routerLink]="['/Accounting/LivreJournal']" class=" menu-items  ">Journal</a>
                 </div>
                 <div class="px-3 pt-3"><a [routerLink]="['/Accounting/BigLivre']" class=" menu-items ">BigLivre</a>
@@ -24,7 +25,7 @@
                 <div class="px-3 pt-3"><a [routerLink]="['/Accounting']" class=" menu-items ">Accounting</a>
                 </div>
             </div>
-            <div class="auth d-flex ">
+            <div class="auth d-none d-lg-flex ">
                 <button [routerLink]="['/Auth/Register']" class="Btn mx-2">
 
                     <div class="sign">
@@ -55,7 +56,7 @@
             </div>
         </div>
         <div class="row container-fluid">
-            <div class="col-md-6 px-5" style="padding-top: 200px;">
+            <div class="col-md-6 px-lg-5" id="annonce">
                 <h1 class="titre">Accounting</h1>
                 <h3>Lorem, ipsum dolor sit amet consectetur adipisicing.</h3>
                 <a style="--clr: #7808d0" class="button" href="#">
@@ -83,7 +84,7 @@
     <section class="container probleme">
         <div class="row">
             <h1 class="pb-lg-5">bookkeeping</h1>
-            <div class="col-lg-6 pe-5 annonce">
+            <div class="col-md-6 pe-5 annonce">
 
                 <p>Struggling with the complexities of financial management for your business? Tackling manual
                     bookkeeping, ensuring tax compliance, and making strategic financial decisions can be overwhelming.
@@ -92,7 +93,7 @@
                     technology-driven financial management, ensuring your business thrives in the competitive landscape
                 </p>
             </div>
-            <div class="col-lg-6 p-3 ps-lg-5 pe-0">
+            <div class="col-md-6 p-3 ps-lg-5 pe-0">
                 <img src="../../assets/img/Business failure-amico.svg" alt="">
             </div>
         </div>
@@ -100,7 +101,7 @@
     <section class="container-fluid probleme mt-3">
         <div class="row">
             <h1 class="pb-lg-5">Services</h1>
-            <div class="col-lg-4  annonce services">
+            <div class="col-md-4  annonce services">
                 <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae veritatis quo commodi non
                     facilis tempora architecto perferendis cumque odio sunt harum quasi eius eaque laboriosam optio quis
@@ -108,10 +109,10 @@
                     accusamus quia labore et dicta, ducimus illo molestias quas.
                 </p>
             </div>
-            <div class="col-lg-4 p-3">
+            <div class="col-md-4 p-3">
                 <img src="../../assets/img/NFT-amico.svg" alt="">
             </div>
-            <div class="col-lg-4  annonce services">
+            <div class="col-md-4  annonce services">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis sint odit voluptate natus
                     obcaecati ducimus unde quos. Animi, voluptatibus quo harum explicabo optio natus quaerat tempora
@@ -246,49 +247,32 @@
     <div class="nav py-3">
 
         <button class="Betn">
-            <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
-                </path>
-            </svg>
-            <span class="icon2"></span>
-            <span class="tooltip">Download</span>
+            <i style="color: white;" class="  fa-solid fa-user-plus">
+
+            </i>
+
+            <span class="tooltip">Register</span>
         </button>
         <button class="Betn">
-            <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
-                </path>
-            </svg>
-            <span class="icon2"></span>
-            <span class="tooltip">Download</span>
+            <i class="fa-solid fa-right-to-bracket" style="color: white;"></i>
+            <span class="tooltip">Login</span>
         </button>
         <button class="Betn">
-            <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
-                </path>
-            </svg>
-            <span class="icon2"></span>
-            <span class="tooltip">Download</span>
+            <i style="color: white;" class="fa-solid fa-book  "></i>
+            <span class="tooltip">BigBook</span>
         </button>
         <button class="Betn">
-            <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
-                </path>
-            </svg>
-            <span class="icon2"></span>
-            <span class="tooltip">Download</span>
+
+            <i style="color: white;" class="fa-regular fa-calendar"></i>
+            <span class="tooltip">Journal</span>
         </button>
         <button class="Betn">
-            <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
-                </path>
-            </svg>
-            <span class="icon2"></span>
-            <span class="tooltip">Download</span>
+            <i style="color: white;" class="fa-solid fa-receipt"></i>
+            <span class="tooltip">Accounting</span>
+        </button>
+        <button class="Betn">
+            <i style="color: white;" class="fa-solid fa-gears"></i>
+            <span class="tooltip">Operator</span>
         </button>
     </div>
 </body>
