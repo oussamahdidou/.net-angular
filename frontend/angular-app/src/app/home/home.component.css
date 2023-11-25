@@ -269,10 +269,4 @@ a {
   #annonce {
     padding-top: 50px;
   }
-  .nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 }

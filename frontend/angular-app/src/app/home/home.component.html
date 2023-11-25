@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    -->
 </head>
 
 <body>
@@ -244,38 +246,6 @@
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-    <div class="nav py-3">
-        <button class="Betn" (click)="OpenNav()">
-            <i [@Rotate-button]="isVisible" style="color: white;" class="fa-solid fa-arrow-left"></i>
-            <span *ngIf="!isVisible; else elseBlock" class="tooltip">Open</span>
-            <ng-template #elseBlock> <span class="tooltip">Close</span></ng-template>
-
-        </button>
-        <button class="Betn" [@visibilityChanged]="isVisible">
-            <i style="color: white;" class="fa-solid fa-user-plus"></i>
-            <span class="tooltip">Register</span>
-        </button>
-        <button class="Betn" [@visibilityChanged]="isVisible">
-            <i class="fa-solid fa-right-to-bracket" style="color: white;"></i>
-            <span class="tooltip">Login</span>
-        </button>
-        <button class="Betn" [@visibilityChanged]="isVisible">
-            <i style="color: white;" class="fa-solid fa-book"></i>
-            <span class="tooltip">BigBook</span>
-        </button>
-        <button class="Betn" [@visibilityChanged]="isVisible">
-            <i style="color: white;" class="fa-regular fa-calendar"></i>
-            <span class="tooltip">Journal</span>
-        </button>
-        <button class="Betn" [@visibilityChanged]="isVisible">
-            <i style="color: white;" class="fa-solid fa-receipt"></i>
-            <span class="tooltip">Accounting</span>
-        </button>
-        <button class="Betn" [@visibilityChanged]="isVisible">
-            <i style="color: white;" class="fa-solid fa-gears"></i>
-            <span class="tooltip">Operator</span>
-        </button>
-    </div>
 
 </body>
 
