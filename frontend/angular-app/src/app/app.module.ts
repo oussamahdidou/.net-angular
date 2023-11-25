@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { OperationComponent } from './Operation/Operation.component';
+import { OperationModule } from './Operation/Operation.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -18,15 +20,15 @@ export function tokenGetter() {
     NotFoundComponent,
     NotFoundComponent,
     HomeComponent,
-
-    OperationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     FormsModule,
+    OperationModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
