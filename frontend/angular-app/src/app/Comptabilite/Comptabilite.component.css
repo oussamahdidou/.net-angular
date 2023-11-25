@@ -68,6 +68,19 @@
   background-color: blueviolet;
   color: white;
 }
-table {
+
+html,
+body {
+  height: fit-content;
+  padding-bottom: 10px;
+}
+body {
+  background-color: rgb(240, 244, 252);
+}
+.table-container {
+  background-color: white;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+}
+.table-title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
