@@ -263,3 +263,4 @@ C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\De
 C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\obj\Debug\net7.0\ComptabiliteAPi.sourcelink.json
+C:\Users\ASUS\Downloads\.net-angular\.net-angular\backend\ComptabiliteApi\bin\Debug\net7.0\Microsoft.AspNet.Identity.Core.dll

@@ -14,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key: "JwtConfig"));
 builder.Services.AddControllers();
 builder.Services.AddTransient<IAuthService, AuthService>();
+builder.Services.AddTransient<IOperationService, OperationService>();
 builder.Services.AddDbContext<DatabContext>(options =>
 {
 
@@ -95,9 +96,15 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapControllerRoute(
         name: "registration",
-        pattern: "api/authentication/registeration",
+        pattern: "api/authentication/registration",  // Corrected typo here
         defaults: new { controller = "Authentication", action = "Register" });
+
+    endpoints.MapControllerRoute(
+        name: "GetOperations",
+        pattern: "api/Accounting/GetOperations",  // Assuming it's in the Accounting controller
+        defaults: new { controller = "Accounting", action = "GetOperations" });
 
     // Additional endpoint mappings as needed...
 });
+
 app.Run();
