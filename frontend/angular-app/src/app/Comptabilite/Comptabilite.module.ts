@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BigLivreComponent } from './BigLivre/BigLivre.component';
 import { LivreJournalComponent } from './LivreJournal/LivreJournal.component';
+import { ComptabiliteDetailComponent } from './ComptabiliteDetail/ComptabiliteDetail.component';
 const routes: Routes = [
   {
     path: '',
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'BigLivre', component: BigLivreComponent },
       { path: 'LivreJournal', component: LivreJournalComponent },
       { path: '', component: ComptabiliteComponent },
+      { path: ':id', component: ComptabiliteDetailComponent },
     ],
   },
 ];
