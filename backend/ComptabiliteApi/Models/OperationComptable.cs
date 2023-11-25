@@ -14,6 +14,8 @@ namespace ComptabiliteAPi.Models
         public int code_compte_crediteurs { get; set; }
         public int id_Facure { get; set; }
         public bool? est_comptabilise {  get; set; }
+        public string? Description { get; set; }
+        public DateTime? date { get; set; }= DateTime.Now;
 
 
     }
