@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,30 +37,55 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 }).AddEntityFrameworkStores<DatabContext>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(opt =>
+{
+    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "MyAPI", Version = "v1" });
+    opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+    });
+
+    opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+});
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-
-// Adding Jwt Bearer  
-            .AddJwtBearer(options =>
-            {
-                options.SaveToken = true;
-                options.RequireHttpsMetadata = false;
-                options.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidAudience = builder.Configuration["JWT:ValidAudience"],
-                    ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-                    ClockSkew = TimeSpan.Zero,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
-                };
-            });
-
+       // Adding Jwt Bearer
+       .AddJwtBearer(options =>
+       {
+           options.SaveToken = true;
+           options.RequireHttpsMetadata = false;
+           options.TokenValidationParameters = new TokenValidationParameters()
+           {
+               ValidateIssuer = false,
+               ValidateAudience = false,
+               ValidAudience = builder.Configuration["JWT:ValidAudience"],
+               ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+           };
+       });
 var app = builder.Build();
 //Seed Config
 if (args.Length >= 2 && args[0].Length == 1 && args[1].ToLower() == "seeddata")
@@ -85,26 +111,11 @@ app.UseAuthentication();
 app.MapControllers();
 app.UseEndpoints(endpoints =>
 {
-    // Map controllers
-    endpoints.MapControllers();
-
-    // Map specific routes for your controller actions
     endpoints.MapControllerRoute(
-        name: "authentication",
-        pattern: "api/authentication/login",
-        defaults: new { controller = "Authentication", action = "Login" });
-
-    endpoints.MapControllerRoute(
-        name: "registration",
-        pattern: "api/authentication/registration",  // Corrected typo here
-        defaults: new { controller = "Authentication", action = "Register" });
-
-    endpoints.MapControllerRoute(
-        name: "GetOperations",
-        pattern: "api/Accounting/GetOperations",  // Assuming it's in the Accounting controller
-        defaults: new { controller = "Accounting", action = "GetOperations" });
-
-    // Additional endpoint mappings as needed...
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 });
+
+
 
 app.Run();

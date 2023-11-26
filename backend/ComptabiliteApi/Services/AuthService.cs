@@ -16,13 +16,14 @@ namespace ComptabiliteAPi.Services
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration _configuration;
         private readonly DatabContext databContext;
-        public AuthService(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, DatabContext databContext)
+        private readonly SignInManager<User> signInManager;
+        public AuthService(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, DatabContext databContext, SignInManager<User> signInManager)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             _configuration = configuration;
             this.databContext = databContext;
-
+            this.signInManager = signInManager;
         }
         public async Task<(int, string)> Registeration(RegistrationModel model)
         {
@@ -69,6 +70,7 @@ namespace ComptabiliteAPi.Services
             var authClaims = new List<Claim>
             {
                new Claim(ClaimTypes.Name, user.UserName),
+               new Claim(ClaimTypes.NameIdentifier, user.Id),
                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 
@@ -90,8 +92,9 @@ namespace ComptabiliteAPi.Services
                 Issuer = _configuration["JWT:ValidIssuer"],
                 Audience = _configuration["JWT:ValidAudience"],
                 SigningCredentials = new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256),
-                Subject = new ClaimsIdentity(claims)
+                Subject = new ClaimsIdentity(claims),
             };
+
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
