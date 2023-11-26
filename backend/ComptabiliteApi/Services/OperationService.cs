@@ -1,6 +1,6 @@
 ﻿using ComptabiliteAPi.DATA;
 using ComptabiliteAPi.Models;
-
+using ComptabiliteAPi.VModels;
 using Microsoft.AspNetCore.Identity;
 
 namespace ComptabiliteAPi.Services
@@ -20,17 +20,26 @@ namespace ComptabiliteAPi.Services
 
         }
 
-        public async Task<(int,string)> GetOperationsAll(string CompanyId)
+        public async Task<(int,List<OperationComptable>,string)> GetOperationsAll(string CompanyId)
         {
-           
-            return (0, "GetOperationszrztsxr");
+            try { 
+            List<OperationComptable> operations=databContext.Operations.Where(x=>x.id_company==CompanyId).ToList();
+            return(1,operations,"success");
+            }
+            catch (Exception ex)
+            {
+                return (0, null, ex.ToString());
+            }
         }
 
-        public async Task<(int, string)> FindOneOperation(string CompanyId, int OperationId)
+        public async Task<(int, OperationComptable)> FindOneOperation(string CompanyId, int OperationId)
+        {
+            return (0, new OperationComptable());
+        }
+
+        public async Task<(int, string)> CreateOperations(string CompanyId, OperationDto operationDto)
         {
             return (0, "");
         }
-
-   
     }
 }

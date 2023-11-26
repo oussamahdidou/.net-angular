@@ -30,22 +30,26 @@ namespace ComptabiliteAPi.Controllers
         public async Task<IActionResult> GetOperations()
         {
              ClaimsPrincipal currentUser = HttpContext.User;
-                string userId = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (currentUser != null)
+            {
+                string? userId = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-                var userobject=await _userManager.FindByIdAsync(userId);
-                return Ok(userobject);
-            
+                var userobject = await _userManager.FindByIdAsync(userId);
+                //return Ok(userobject);
 
 
-            //var (status,message)= await operationservice.GetOperationsAll("");
-            //if (status == 0)
-            //{
-            //    return Ok(currentUser);
-            //}
-            //else
-            //{
-            //    return Ok(message);
-            //}
+
+                var (status,operations, message) = await operationservice.GetOperationsAll(userobject.id_company);
+                if (status == 1)
+                {
+                    return Ok(operations);
+                }
+                else
+                {
+                    return BadRequest(message);
+                }
+            }
+            return Unauthorized();
 
         }
     }
