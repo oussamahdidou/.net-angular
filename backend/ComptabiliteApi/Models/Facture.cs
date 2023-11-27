@@ -5,7 +5,7 @@ namespace ComptabiliteAPi.Models
     public class Facture
     {
         [Key]
-        public int Id { get; set; }
+        public string? Id { get; set; }
         public string? Name { get; set; }
         public float? PrixUnitaire { get; set; }
         public int Quantite { get; set; }

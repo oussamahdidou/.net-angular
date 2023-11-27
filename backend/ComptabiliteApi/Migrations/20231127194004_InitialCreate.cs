@@ -67,8 +67,7 @@ namespace ComptabiliteAPi.Migrations
                 name: "Factures",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PrixUnitaire = table.Column<float>(type: "real", nullable: true),
                     Quantite = table.Column<int>(type: "int", nullable: false),
@@ -88,7 +87,7 @@ namespace ComptabiliteAPi.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    id_Operation = table.Column<int>(type: "int", nullable: false),
+                    id_Operation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     id_Facture = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -100,14 +99,12 @@ namespace ComptabiliteAPi.Migrations
                 name: "Operations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     id_company = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     compte_debiteurs = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     code_compte_debiteurs = table.Column<int>(type: "int", nullable: false),
                     compte_crediteurs = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     code_compte_crediteurs = table.Column<int>(type: "int", nullable: false),
-                    id_Facure = table.Column<int>(type: "int", nullable: false),
                     est_comptabilise = table.Column<bool>(type: "bit", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     date = table.Column<DateTime>(type: "datetime2", nullable: true)

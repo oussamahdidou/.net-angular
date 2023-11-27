@@ -37,9 +37,50 @@ namespace ComptabiliteAPi.Services
             return (0, new OperationComptable());
         }
 
-        public async Task<(int, string)> CreateOperations(string CompanyId, OperationDto operationDto)
+        public async Task<(int, string)> CreateOperations(string OperateurId, string CompanyId, OperationDto operationDto)
         {
-            return (0, "");
+            try
+            {
+                OperationComptable operationComptable = new OperationComptable()
+                {
+                    Id=Guid.NewGuid().ToString(),
+                    est_comptabilise = false,
+                    Description = operationDto.Description,
+                    id_company = CompanyId,
+                    date = DateTime.Today,
+
+                };
+
+                Facture facture = new Facture()
+                {
+                    Id = operationDto.Id_Facture,
+                    PrixTVA = operationDto.PrixTVA,
+                    PrixHT = operationDto.PrixHT,
+                    Quantite = operationDto.Quantite,
+                    id_company = CompanyId,
+                    Name = operationDto.Name,
+                    id_operateur = OperateurId,
+                    PrixUnitaire = operationDto.PrixUnitaire,
+                };
+                //string factureId = facture.Id;
+                Libellation libellation = new Libellation()
+                {
+                    id_Facture = operationDto.Id_Facture,
+                    id_Operation = operationComptable.Id,
+                };
+                databContext.Libellations.Add(libellation);
+                databContext.Factures.Add(facture);
+                databContext.Operations.Add(operationComptable);
+
+                await databContext.SaveChangesAsync();
+
+
+                return (1, "success");
+            }
+        catch(Exception ex)
+            {
+                return(0, ex.ToString());
+            }
         }
     }
 }

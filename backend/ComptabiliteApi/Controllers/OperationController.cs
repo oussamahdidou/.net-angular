@@ -1,6 +1,7 @@
 ﻿using ComptabiliteAPi.DATA;
 using ComptabiliteAPi.Models;
 using ComptabiliteAPi.Services;
+using ComptabiliteAPi.VModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -52,5 +53,25 @@ namespace ComptabiliteAPi.Controllers
             return Unauthorized();
 
         }
+        [HttpPost]
+        [Route("CreateOperations")]
+        public async Task<IActionResult> CreateOperations(OperationDto operationDto)
+        {
+            if (operationDto == null)
+            {
+                return BadRequest();
+            }
+            ClaimsPrincipal currentUser = HttpContext.User;
+            string? userId = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var userobject = await _userManager.FindByIdAsync(userId);
+            var (status,message)=await operationservice.CreateOperations(userId,userobject.id_company,operationDto);
+            if (status == 1)
+            {
+                return Ok(message);
+            }
+            return BadRequest(message);
+        }
+
     }
 }

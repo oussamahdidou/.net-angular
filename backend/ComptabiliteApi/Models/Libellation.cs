@@ -7,7 +7,7 @@ namespace ComptabiliteAPi.Models
         [Key]
         public int id {  get; set; }
         [Required]
-        public int id_Operation { get; set; }
+        public string id_Operation { get; set; }
         [Required]
         public string id_Facture { get; set; }
     }

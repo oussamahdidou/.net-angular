@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ComptabiliteAPi.Migrations
 {
     [DbContext(typeof(DatabContext))]
-    [Migration("20231125175848_InitialCreate")]
+    [Migration("20231127194004_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -40,11 +40,8 @@ namespace ComptabiliteAPi.Migrations
 
             modelBuilder.Entity("ComptabiliteAPi.Models.Facture", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -84,8 +81,9 @@ namespace ComptabiliteAPi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("id_Operation")
-                        .HasColumnType("int");
+                    b.Property<string>("id_Operation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
@@ -94,11 +92,8 @@ namespace ComptabiliteAPi.Migrations
 
             modelBuilder.Entity("ComptabiliteAPi.Models.OperationComptable", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -120,9 +115,6 @@ namespace ComptabiliteAPi.Migrations
 
                     b.Property<bool?>("est_comptabilise")
                         .HasColumnType("bit");
-
-                    b.Property<int>("id_Facure")
-                        .HasColumnType("int");
 
                     b.Property<string>("id_company")
                         .HasColumnType("nvarchar(max)");

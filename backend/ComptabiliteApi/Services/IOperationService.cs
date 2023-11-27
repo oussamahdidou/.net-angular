@@ -9,7 +9,7 @@ namespace ComptabiliteAPi.Services
     {
         Task<(int,List<OperationComptable>, string)> GetOperationsAll(string CompanyId);
         Task<(int, OperationComptable)> FindOneOperation(string CompanyId,int OperationId);
-        Task<(int, string)> CreateOperations(string CompanyId,OperationDto operationDto);
+        Task<(int, string)> CreateOperations(string OperateurId,string CompanyId,OperationDto operationDto);
        
     }
 }
