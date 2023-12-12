@@ -25,14 +25,8 @@ namespace ComptabiliteAPi.Services
         public async Task<(int,List<AccountingDto>,string)> GetOperationsAll(string CompanyId)
         {
             try {
-                var operations = from OperationComptable in databContext.Operations
-                                 join Libellation in databContext.Libellations on OperationComptable.Id equals Libellation.id_Operation
-                                 //where (/*OperationComptable.id_company == CompanyId && OperationComptable.est_comptabilise==false*/)
-                                 select new
-                                 AccountingDto()
-                                 {
 
-                                 };
+
                 return (1,new List<AccountingDto>(),"success");
             }
             catch (Exception ex)
@@ -50,15 +44,7 @@ namespace ComptabiliteAPi.Services
         {
             try
             {
-                OperationComptable operationComptable = new OperationComptable()
-                {
-                    //Id=Guid.NewGuid().ToString(),
-                    //est_comptabilise = false,
-                    //Description = operationDto.Description,
-                    //id_company = CompanyId,
-                    //date = DateTime.Today,
-                    //Name= operationDto.Name,
-                };
+
 
                 Facture facture = new Facture()
                 {
@@ -73,7 +59,6 @@ namespace ComptabiliteAPi.Services
                 };
             
                 databContext.Factures.Add(facture);
-                databContext.Operations.Add(operationComptable);
 
                 await databContext.SaveChangesAsync();
 
