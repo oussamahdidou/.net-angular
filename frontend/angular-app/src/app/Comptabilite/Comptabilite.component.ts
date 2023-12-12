@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { AccountingService } from '../Services/Accounting.service';
 import Swal from 'sweetalert2';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-Comptabilite',
@@ -13,19 +14,21 @@ import Swal from 'sweetalert2';
 })
 export class ComptabiliteComponent implements OnInit {
   response: any;
+  data: any[] = [];
   constructor(
     private formBuilder: FormBuilder,
-    private authservice: AccountingService,
+    private accountingservice: AccountingService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.authservice.AllOperations().subscribe(
+    this.accountingservice.AllOperations().subscribe(
       (response) => {
         console.log(response); // Log the raw response
         if (response instanceof HttpResponse) {
           if (response.status === 200) {
-            const token = response.body; // Directly access the body as text
+            const token = response.body;
+            this.data = [...token]; // Directly access the body as text
             console.log(token);
           }
         } else {

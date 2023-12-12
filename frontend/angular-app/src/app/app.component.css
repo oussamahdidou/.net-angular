@@ -8,8 +8,10 @@
   left: 20px;
   border-radius: 50px;
   background-color: rgb(163, 142, 255);
-  display: none;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
 
   transition: 2s ease-out;

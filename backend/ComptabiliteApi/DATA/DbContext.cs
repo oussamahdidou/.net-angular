@@ -12,7 +12,6 @@ namespace ComptabiliteAPi.DATA
         }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Facture> Factures { get; set; }
-        public DbSet<Libellation> Libellations { get; set; }
         public DbSet<OperationComptable> Operations { get; set; }
 
     }

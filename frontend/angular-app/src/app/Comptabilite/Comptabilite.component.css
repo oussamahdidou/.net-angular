@@ -84,3 +84,9 @@ body {
 .table-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

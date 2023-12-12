@@ -40,7 +40,7 @@ namespace ComptabiliteAPi.DATA
                         UserName = "oussamahdidou",
                         Email = adminuserEmail,
                         EmailConfirmed = true,
-                        id_company="1"
+                        id_company="string"
 
                     };
                     await usermanager.CreateAsync(newadminUser, "Coding@1234?");
@@ -56,7 +56,7 @@ namespace ComptabiliteAPi.DATA
                         UserName = "oussamahdidou2",
                         Email = studentuserEmail,
                         EmailConfirmed = true,
-                        id_company = "1"
+                        id_company = "string"
 
                     };
                     await usermanager.CreateAsync(newstudentUser, "Coding@1234?");
