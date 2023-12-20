@@ -9,6 +9,7 @@ namespace ComptabiliteAPi.DATA
     {
         public DatabContext(DbContextOptions<DatabContext> options) : base(options)
         {
+
         }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Facture> Factures { get; set; }

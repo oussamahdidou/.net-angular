@@ -1,4 +1,3 @@
-using ComptabiliteAPi.Configurations;
 using ComptabiliteAPi.DATA;
 using ComptabiliteAPi.Models;
 using ComptabiliteAPi.Services;
@@ -12,7 +11,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key: "JwtConfig"));
+//builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key: "JwtConfig"));
 builder.Services.AddControllers();
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<IOperationService, OperationService>();

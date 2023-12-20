@@ -38,6 +38,12 @@ namespace ComptabiliteAPi.Services
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.username,
                 id_company= model.Lei,
+                Company = new Company()
+                {
+                    Lei = model.Lei,
+                    Name = model.Company_name
+                }
+
             };
             var company = new Company()
             {
