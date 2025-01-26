@@ -16,48 +16,7 @@ interface InputValidator {
   styleUrl: './initiliser.component.css',
 })
 export class InitiliserComponent implements OnInit {
-  inputFields: InputField[] = [
-    {
-      label: 'First Name',
-      type: 'text',
-      name: 'firstName',
-      placeholder: 'Enter your first name',
-      defaultValue: '',
-      required: true,
-    },
-    {
-      label: 'Last Name',
-      type: 'text',
-      name: 'lastName',
-      placeholder: 'Enter your last name',
-      defaultValue: '',
-      required: true,
-    },
-    {
-      label: 'Email',
-      type: 'email',
-      name: 'email',
-      placeholder: 'Enter your email address',
-      defaultValue: '',
-      required: true,
-    },
-    {
-      label: 'Phone Number',
-      type: 'tel',
-      name: 'phoneNumber',
-      placeholder: 'Enter your phone number',
-      defaultValue: '',
-      required: false,
-    },
-    {
-      label: 'Password',
-      type: 'password',
-      name: 'password',
-      placeholder: 'Enter your password',
-      defaultValue: '',
-      required: true,
-    },
-  ];
+  inputFields: InputField[] = [];
 
   inputTypes: string[] = [
     'text',
