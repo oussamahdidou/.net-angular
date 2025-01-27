@@ -1,47 +1,34 @@
 <h2 mat-dialog-title class="text-2xl font-bold text-gray-800">Enter Field Information</h2>
-
 <mat-dialog-content class="p-6">
     <form [formGroup]="form" class="space-y-4">
-        <!-- Label Input -->
         <div>
             <label for="label" class="block text-sm font-medium text-gray-700">Label</label>
             <input id="label" type="text" formControlName="label" placeholder="Enter label"
                 class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-300" />
         </div>
-
-        <!-- Type (Hidden Field) -->
         <input type="hidden" formControlName="type" />
-
-        <!-- Name/ID Input -->
         <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Name/ID</label>
             <input id="name" type="text" formControlName="name" placeholder="Enter unique ID"
                 class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-300" />
         </div>
-
-        <!-- Placeholder Input -->
         <div>
             <label for="placeholder" class="block text-sm font-medium text-gray-700">Placeholder</label>
             <input id="placeholder" type="text" formControlName="placeholder" placeholder="Enter placeholder"
                 class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-300" />
         </div>
-
-        <!-- Default Value Input -->
         <div>
             <label for="defaultValue" class="block text-sm font-medium text-gray-700">Default Value</label>
             <input id="defaultValue" type="{{data.type}}" formControlName="defaultValue"
                 placeholder="Optional default value"
                 class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-300" />
         </div>
-
-        <!-- Required Checkbox -->
         <div class="flex items-center">
             <input id="required" type="checkbox" formControlName="required" class="h-4 w-4 rounded border-gray-300" />
             <label for="required" class="ml-2 text-sm font-medium text-gray-700">Required</label>
         </div>
     </form>
 </mat-dialog-content>
-
 <mat-dialog-actions class="p-4 flex justify-end space-x-2">
     <button mat-button (click)="onClose()" class="bg-gray-500 text-white px-4 py-2 rounded-lg">
         Cancel

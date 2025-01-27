@@ -24,7 +24,6 @@ export class InputmodalComponent {
       required: [false],
     });
   }
-
   onClose(): void {
     this.dialogRef.close();
   }
