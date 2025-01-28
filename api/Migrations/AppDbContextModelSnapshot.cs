@@ -273,6 +273,26 @@ namespace api.Migrations
                     b.ToTable("Inputs");
                 });
 
+            modelBuilder.Entity("api.Models.Option", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("InputId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InputId");
+
+                    b.ToTable("Options");
+                });
+
             modelBuilder.Entity("api.Models.Response", b =>
                 {
                     b.Property<string>("AppUserId")
@@ -375,6 +395,17 @@ namespace api.Migrations
                     b.Navigation("Formulaire");
                 });
 
+            modelBuilder.Entity("api.Models.Option", b =>
+                {
+                    b.HasOne("api.Models.Input", "Input")
+                        .WithMany("Options")
+                        .HasForeignKey("InputId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Input");
+                });
+
             modelBuilder.Entity("api.Models.Response", b =>
                 {
                     b.HasOne("api.Models.AppUser", "AppUser")
@@ -431,6 +462,8 @@ namespace api.Migrations
 
             modelBuilder.Entity("api.Models.Input", b =>
                 {
+                    b.Navigation("Options");
+
                     b.Navigation("Responses");
                 });
 #pragma warning restore 612, 618

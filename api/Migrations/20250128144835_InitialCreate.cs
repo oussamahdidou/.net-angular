@@ -221,6 +221,25 @@ namespace api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Options",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InputId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Options", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Options_Inputs_InputId",
+                        column: x => x.InputId,
+                        principalTable: "Inputs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Responses",
                 columns: table => new
                 {
@@ -295,6 +314,11 @@ namespace api.Migrations
                 column: "FormulaireId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Options_InputId",
+                table: "Options",
+                column: "InputId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Responses_InputId",
                 table: "Responses",
                 column: "InputId");
@@ -322,6 +346,9 @@ namespace api.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Options");
 
             migrationBuilder.DropTable(
                 name: "Responses");

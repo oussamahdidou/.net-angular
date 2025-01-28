@@ -15,6 +15,7 @@ namespace api.Data
         public DbSet<Submit> Submits { get; set; }
         public DbSet<Input> Inputs { get; set; }
         public DbSet<Formulaire> Formulaires { get; set; }
+        public DbSet<Option> Options { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
