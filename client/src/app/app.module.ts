@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HotToastModule } from '@ngneat/hot-toast';
 import {
   BrowserModule,
   provideClientHydration,
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
+    HotToastModule.forRoot(),
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

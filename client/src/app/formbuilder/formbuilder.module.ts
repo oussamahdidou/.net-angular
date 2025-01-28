@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { OptionsmodalComponent } from './optionsmodal/optionsmodal.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormService } from '../services/form.service';
 const routes: Routes = [
   {
     path: '',
@@ -36,5 +37,6 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forChild(routes),
   ],
+  providers: [FormService],
 })
 export class FormbuilderModule {}

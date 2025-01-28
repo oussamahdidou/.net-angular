@@ -3,6 +3,11 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { InputmodalComponent } from '../inputmodal/inputmodal.component';
 import { InputField } from '../../types/types';
+import { HotToastService } from '@ngneat/hot-toast';
+import { FormService } from '../../services/form.service';
+import { response } from 'express';
+import { error } from 'console';
+
 interface InputValidator {
   label: string;
   name: string;
@@ -11,6 +16,7 @@ interface InputValidator {
   options?: string[];
   placeholder: string;
 }
+
 @Component({
   selector: 'app-initiliser',
   templateUrl: './initiliser.component.html',
@@ -18,7 +24,17 @@ interface InputValidator {
 })
 export class InitiliserComponent implements OnInit {
   addForm() {
-    console.log(this.inputFields);
+    const toastRef = this.toast.loading('Processing your request...');
+    this.formService.AddFormAsync({ fields: this.inputFields }).subscribe(
+      (response) => {
+        toastRef.close();
+        this.toast.success(`Operation completed successfully!${response}`);
+      },
+      (error) => {
+        toastRef.close();
+        this.toast.error(error);
+      }
+    );
   }
   inputFields: InputField[] = [];
   needOptions(type: string): boolean {
@@ -42,7 +58,12 @@ export class InitiliserComponent implements OnInit {
   form: FormGroup;
   inputs: InputValidator[] = [];
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) {
+  constructor(
+    private toast: HotToastService,
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private formService: FormService
+  ) {
     this.form = this.fb.group({});
   }
   ngOnInit(): void {
