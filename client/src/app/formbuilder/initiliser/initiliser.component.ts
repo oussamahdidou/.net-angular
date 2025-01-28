@@ -17,6 +17,9 @@ interface InputValidator {
   styleUrl: './initiliser.component.css',
 })
 export class InitiliserComponent implements OnInit {
+  addForm() {
+    console.log(this.inputFields);
+  }
   inputFields: InputField[] = [];
   needOptions(type: string): boolean {
     return type === 'radio' || type === 'checkbox';
