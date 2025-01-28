@@ -1,12 +1,12 @@
 ﻿
+using api.Dto;
+using api.Interfaces;
 using api.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using UsersService.Dto;
-using UsersService.Interfaces;
 
-namespace UsersService.Controllers
+namespace api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -52,20 +52,12 @@ namespace UsersService.Controllers
                 var createuser = await userManager.CreateAsync(appUser, model.Password);
                 if (createuser.Succeeded)
                 {
-                    var roleresult = await userManager.AddToRoleAsync(appUser, "Customer");
-                    if (roleresult.Succeeded)
+                    return Ok(new NewUserDto()
                     {
-                        return Ok(new NewUserDto()
-                        {
-                            Username = appUser.UserName,
-                            Email = appUser.Email,
-                            Token = await tokenService.CreateToken(appUser)
-                        });
-                    }
-                    else
-                    {
-                        return StatusCode(500, roleresult.Errors);
-                    }
+                        Username = appUser.UserName,
+                        Email = appUser.Email,
+                        Token = await tokenService.CreateToken(appUser)
+                    });
                 }
                 else
                 {

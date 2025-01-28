@@ -1,7 +1,7 @@
 ﻿using api.Models;
 
 
-namespace UsersService.Interfaces
+namespace api.Interfaces
 {
     public interface ITokenService
     {
