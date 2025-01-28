@@ -49,6 +49,7 @@ export class InitiliserComponent implements OnInit {
     this.addInputs(this.inputFields);
   }
   addInputField(field: InputField): void {
+    this.inputFields.push(field);
     const control = this.fb.control(
       field.defaultValue,
       field.required ? Validators.required : null

@@ -7,3 +7,6 @@ export interface InputField {
   required: boolean;
   options: string[];
 }
+export interface FormSchema {
+  fields: InputField[];
+}

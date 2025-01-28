@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { OptionsmodalComponent } from './optionsmodal/optionsmodal.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +19,11 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [InitiliserComponent, InputmodalComponent, OptionsmodalComponent],
+  declarations: [
+    InitiliserComponent,
+    InputmodalComponent,
+    OptionsmodalComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -28,6 +33,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    HttpClientModule,
     RouterModule.forChild(routes),
   ],
 })
