@@ -8,6 +8,7 @@ interface InputValidator {
   name: string;
   type: string;
   control: any;
+  options?: string[];
   placeholder: string;
 }
 @Component({
@@ -17,7 +18,9 @@ interface InputValidator {
 })
 export class InitiliserComponent implements OnInit {
   inputFields: InputField[] = [];
-
+  needOptions(type: string): boolean {
+    return type === 'radio' || type === 'checkbox';
+  }
   inputTypes: string[] = [
     'text',
     'password',
@@ -47,37 +50,30 @@ export class InitiliserComponent implements OnInit {
       field.defaultValue,
       field.required ? Validators.required : null
     );
-
-    // Push the new input field to the inputs array
     this.inputs.push({
       label: field.label,
       name: field.name,
       control: control,
       type: field.type,
       placeholder: field.placeholder,
+      options: field.options,
     });
-
-    // Add the form control to the form
     this.form.addControl(field.name, control);
   }
   addInputs(inputFields: InputField[]): void {
     inputFields.forEach((field) => {
-      // Create a form control with validation based on the required field
       const control = this.fb.control(
         field.defaultValue,
         field.required ? Validators.required : null
       );
-
-      // Push the input details (label, name, control) to the inputs array
       this.inputs.push({
         label: field.label,
         name: field.name,
         control: control,
         type: field.type,
         placeholder: field.placeholder,
+        options: field.options,
       });
-
-      // Add each form control to the form by the field's name
       this.form.addControl(field.name, control);
     });
   }
@@ -88,7 +84,6 @@ export class InitiliserComponent implements OnInit {
         type: type,
       },
     });
-
     dialogRef.afterClosed().subscribe((result: InputField) => {
       if (result) {
         this.addInputField(result);

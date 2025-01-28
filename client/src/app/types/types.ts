@@ -5,4 +5,5 @@ export interface InputField {
   placeholder: string;
   defaultValue: string;
   required: boolean;
+  options: string[];
 }

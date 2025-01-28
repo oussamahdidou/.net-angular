@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { OptionsmodalComponent } from './optionsmodal/optionsmodal.component';
 const routes: Routes = [
   {
     path: '',
@@ -17,7 +18,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [InitiliserComponent, InputmodalComponent],
+  declarations: [InitiliserComponent, InputmodalComponent, OptionsmodalComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

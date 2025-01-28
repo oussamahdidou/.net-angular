@@ -12,21 +12,40 @@
             <input id="name" type="text" formControlName="name" placeholder="Enter unique ID"
                 class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-300" />
         </div>
+        @if (!(needOptions()||data.type === 'file')) {
         <div>
             <label for="placeholder" class="block text-sm font-medium text-gray-700">Placeholder</label>
             <input id="placeholder" type="text" formControlName="placeholder" placeholder="Enter placeholder"
                 class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-300" />
         </div>
+
         <div>
             <label for="defaultValue" class="block text-sm font-medium text-gray-700">Default Value</label>
             <input id="defaultValue" type="{{data.type}}" formControlName="defaultValue"
                 placeholder="Optional default value"
                 class="w-full border rounded-lg p-2 focus:ring focus:ring-blue-300" />
         </div>
+        }
+        @if (needOptions()) {
+        <button type="button" (click)="openModal()"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
+            Option</button>
+
+
         <div class="flex items-center">
             <input id="required" type="checkbox" formControlName="required" class="h-4 w-4 rounded border-gray-300" />
             <label for="required" class="ml-2 text-sm font-medium text-gray-700">Required</label>
         </div>
+        <label for="options" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">option :</label>
+        @for (item of options; track $index) {
+        <div class="flex items-center mb-4">
+            <input id="default-checkbox" type="{{data.type}}" value="{{item}}" formControlName="options"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="default-checkbox"
+                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{item}}</label>
+        </div>
+        }
+        }
     </form>
 </mat-dialog-content>
 <mat-dialog-actions class="p-4 flex justify-end space-x-2">
