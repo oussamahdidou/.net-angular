@@ -28,11 +28,11 @@ export class InitiliserComponent implements OnInit {
     this.formService.AddFormAsync({ fields: this.inputFields }).subscribe(
       (response) => {
         toastRef.close();
-        this.toast.success(`Operation completed successfully!${response}`);
+        this.toast.success(`Operation completed successfully!`);
       },
       (error) => {
         toastRef.close();
-        this.toast.error(error);
+        this.toast.error(error.error);
       }
     );
   }

@@ -155,4 +155,3 @@ C:\Users\pc\Downloads\projects\formulaire\api\obj\Debug\net8.0\refint\api.dll
 C:\Users\pc\Downloads\projects\formulaire\api\obj\Debug\net8.0\api.pdb
 C:\Users\pc\Downloads\projects\formulaire\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 C:\Users\pc\Downloads\projects\formulaire\api\obj\Debug\net8.0\ref\api.dll
-C:\Users\pc\Downloads\projects\formulaire\api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
