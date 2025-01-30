@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
-    path: '',
+    path: 'builder',
     loadChildren: () =>
       import('./formbuilder/formbuilder.module').then(
         (m) => m.FormbuilderModule
@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '',
+    loadChildren: () => import('./show/show.module').then((m) => m.ShowModule),
   },
 ];
 
