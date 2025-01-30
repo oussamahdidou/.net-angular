@@ -3,6 +3,7 @@ using api.Dto;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Repositories
 {
@@ -24,14 +25,14 @@ namespace api.Repositories
 
         }
 
-        public Task<List<Formulaire>> GetAllFormulairesAsync()
+        public async Task<List<Formulaire>> GetAllFormulairesAsync(string Id)
         {
-            throw new NotImplementedException();
+            return await appDbContext.Formulaires.Where(x => x.AppUserId == Id).ToListAsync();
         }
 
-        public Task<Formulaire> GetFormulaireByIdAsync(string id)
+        public async Task<Formulaire> GetFormulaireByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return await appDbContext.Formulaires.FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

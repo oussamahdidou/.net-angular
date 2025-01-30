@@ -29,5 +29,21 @@ namespace api.Controllers
             Formulaire formulaire = await formRepository.CreateFormulaireAsync(createFormDto, appUser.Id);
             return Ok(formulaire);
         }
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetFormulaireByIdAsync([FromRoute] string id)
+        {
+            Formulaire formulaire = await formRepository.GetFormulaireByIdAsync(id);
+            return Ok(formulaire);
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetAllFormulairesAsync()
+        {
+            string username = User.GetUsername();
+            AppUser? appUser = await userManager.FindByNameAsync(username);
+            List<Formulaire> formulaires = await formRepository.GetAllFormulairesAsync(appUser.Id);
+            return Ok(formulaires);
+        }
     }
 }

@@ -10,3 +10,4 @@ export interface InputField {
 export interface FormSchema {
   fields: InputField[];
 }
+export interface Form {}

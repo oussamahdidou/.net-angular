@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
+    HttpClientModule,
     HotToastModule.forRoot(),
   ],
   providers: [provideClientHydration()],

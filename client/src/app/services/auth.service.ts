@@ -36,20 +36,22 @@ export class AuthService {
   headers: any | undefined;
 
   constructor(private http: HttpClient, private router: Router) {
-    if (
-      localStorage.getItem('token') &&
-      !this.jwtHelper.isTokenExpired(localStorage.getItem('token'))
-    ) {
-      this._$isLoggedin.next(true);
-      this.jwt = localStorage.getItem('token') || '';
-      this.token = this.getUser(this.jwt);
-      console.log(this.token);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (
+        localStorage.getItem('token') &&
+        !this.jwtHelper.isTokenExpired(localStorage.getItem('token'))
+      ) {
+        this._$isLoggedin.next(true);
+        this.jwt = localStorage.getItem('token') || '';
+        this.token = this.getUser(this.jwt);
+        console.log(this.token);
 
-      this.headers = new HttpHeaders().set(
-        'Authorization',
-        'Bearer ' + this.jwt
-      );
-    } else {
+        this.headers = new HttpHeaders().set(
+          'Authorization',
+          'Bearer ' + this.jwt
+        );
+      } else {
+      }
     }
   }
 
@@ -62,7 +64,7 @@ export class AuthService {
     this._$isLoggedin.next(false);
   }
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<NewUser> {
     return this.http
       .post<NewUser>(`${environment.apiUrl}/api/Account/Login`, {
         username,
@@ -85,7 +87,7 @@ export class AuthService {
     userName: string,
     email: string,
     password: string
-  ): Observable<any> {
+  ): Observable<NewUser> {
     return this.http
       .post<NewUser>(`${environment.apiUrl}/api/Account/Register`, {
         userName,
@@ -94,7 +96,10 @@ export class AuthService {
       })
       .pipe(
         tap<NewUser>(
-          (response) => {},
+          (response) => {
+            localStorage.setItem('token', response['token']);
+            this._$isLoggedin.next(true);
+          },
           (error) => {
             console.log('error : 1111111' + error.error);
           }
